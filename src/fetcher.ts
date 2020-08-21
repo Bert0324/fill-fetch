@@ -2,7 +2,6 @@ import { merge } from 'lodash-es';
 import { IConfig, IInterceptor, Fetch, IFilledFetch } from './index.d';
 
 export class FetchFiller {
-
     config: IConfig = {
         headers: {
             'Content-Type': 'application/json',

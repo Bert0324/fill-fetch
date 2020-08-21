@@ -6,7 +6,7 @@ export interface IConfig extends RequestInit {
 
 export type requestInterceptor = (config: IConfig) => IConfig | Promise<IConfig>;
 export type responseInterceptor = <T = any>(response: T) => T | Promise<T>;
-export type responseErrorCatch = <T = any>(err: any) => T | Promise<T>;
+export type responseErrorCatch = (err: any) => any;
 
 export interface IInterceptor {
     request: requestInterceptor[] & {
