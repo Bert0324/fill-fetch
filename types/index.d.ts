@@ -1,11 +1,23 @@
 /**
  * request configuration types
- * @default undefined
  */
 export interface IConfig extends RequestInit {
+    /**
+     * base url
+     * @default location.origin
+     */
     baseURL?: string;
+    /**
+     * request timeout
+     * @default 5000
+     */
     timeout?: number;
+    /**
+     * max concurrence 
+     * @default 10
+     */
     maxConcurrence?: number;
+    [key: string]: any;
 }
 
 export type requestInterceptor = (config: IConfig) => IConfig | Promise<IConfig>;
