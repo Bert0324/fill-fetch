@@ -1,5 +1,5 @@
 import { merge } from 'lodash-es';
-import { IConfig, IInterceptor, Fetch, IFilledFetch } from './index.d';
+import { IConfig, IInterceptor, Fetch, IFilledFetch } from '../types/index.d';
 
 export class FetchFiller {
     config: IConfig = {
