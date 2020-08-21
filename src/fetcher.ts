@@ -128,7 +128,7 @@ export class FetchFiller {
     }
 
     fetchBinding() {
-        window.fetch = async (input: RequestInfo, init?: RequestInit) => {
+        const fillFetch: IFilledFetch = async (input: RequestInfo, init?: RequestInit) => {
             try {
                 const mergedConfig = await this.setConfig(init);
                 const { signal, abort } = new AbortController();
@@ -146,11 +146,11 @@ export class FetchFiller {
                 return this.catchError(error);
             }
         };
-        (window.fetch as any).get = this.get.bind(this);
-        (window.fetch as any).post = this.post.bind(this);
-        (window.fetch as any).interceptors = this.interceptors;
-        (window.fetch as any).config = this.config;
-        return window.fetch as IFilledFetch;
+        fillFetch.get = this.get.bind(this);
+        fillFetch.post = this.post.bind(this);
+        fillFetch.interceptors = this.interceptors;
+        fillFetch.config = this.config;
+        return fillFetch;
     }
 
 }
