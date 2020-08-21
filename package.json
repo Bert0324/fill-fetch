@@ -1,6 +1,6 @@
 {
   "name": "fill-fetch",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A modern, high performance extension of `fetch` api.",
   "main": "dist/index.min.js",
   "types": "types/index.d.ts",
