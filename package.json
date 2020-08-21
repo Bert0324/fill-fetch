@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bert0324/fill-fetch"
+  },
+  "homepage": "https://github.com/Bert0324/fill-fetch#readme",
   "scripts": {
     "cross-env": "cross-env TS_NODE_PROJECT=\"./tsconfig.build.json\"",
     "dev": "yarn cross-env webpack-dev-server --config \"./webpack.config.ts\"",

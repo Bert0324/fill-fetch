@@ -41,4 +41,4 @@ const data = await (await fetch('/')).json();
 
 ## Notice
 
-This project uses some of new browser API including: `fetch`, `requestIdleCallback`, `AbortController`.
+This project uses some of new browser API including: `fetch`, `requestIdleCallback`, `AbortController`, so it should be worked on browser supporting these API.
