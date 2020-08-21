@@ -1,6 +1,6 @@
 {
   "name": "fill-fetch",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "fill fetch with more functions",
   "main": "dist/index.min.js",
   "types": "types/index.d.ts",
