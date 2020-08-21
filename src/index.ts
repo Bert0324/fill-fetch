@@ -1,3 +1,6 @@
-import { fetcher } from "./fetcher"
+import { FetchFiller } from "./fetcher"
 
-export const fill = fetcher.fetchBinding;
+export const fill = () => {
+    const filler = new FetchFiller();
+    filler.fetchBinding();
+};

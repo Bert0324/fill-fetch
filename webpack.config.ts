@@ -12,8 +12,10 @@ export default {
     output: {
         path: `${__dirname}/dist`,
         filename: `[name].min.js`,
+        library: 'fill-fetch',
+        libraryTarget: 'commonjs2'
     },
-    target: 'web',
+    target: 'node',
     module: {
         rules: [
             {

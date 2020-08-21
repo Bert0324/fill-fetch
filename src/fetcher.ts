@@ -10,7 +10,7 @@ type requestInterceptor = (config: IConfig) => IConfig | Promise<IConfig>;
 type responseInterceptor = <T = any>(response: T) => T | Promise<T>;
 type responseErrorCatch = <T = any>(err: any) => T | Promise<T>;
 
-export const fetcher = new class {
+export class FetchFiller {
 
     config: IConfig = {
         headers: {
