@@ -1,14 +1,5 @@
 import { merge } from 'lodash-es';
-
-interface IConfig extends RequestInit {
-    baseURL?: string;
-    timeout?: number;
-    maxConcurrence?: number;
-}
-
-type requestInterceptor = (config: IConfig) => IConfig | Promise<IConfig>;
-type responseInterceptor = <T = any>(response: T) => T | Promise<T>;
-type responseErrorCatch = <T = any>(err: any) => T | Promise<T>;
+import { IConfig, IInterceptor, Fetch, IFilledFetch } from './index.d';
 
 export class FetchFiller {
 
@@ -23,17 +14,13 @@ export class FetchFiller {
         maxConcurrence: 10
     };
 
-    interceptors: {
-        request: requestInterceptor[] & { use?: (interceptor: requestInterceptor) => void },
-        response: responseInterceptor[] & { use?: (interceptor: responseInterceptor, catcher?: responseErrorCatch) => void },
-        errorHandlers: responseErrorCatch[]
-    } = {
+    interceptors: IInterceptor = {
         request: [],
         response: [],
         errorHandlers: []
     };
 
-    private rawFetch: typeof fetch = window.fetch.bind(window);
+    private rawFetch: Fetch = window.fetch.bind(window);
 
     private currentRequest = 0;
 
@@ -162,7 +149,7 @@ export class FetchFiller {
         (window.fetch as any).post = this.post.bind(this);
         (window.fetch as any).interceptors = this.interceptors;
         (window.fetch as any).config = this.config;
-        return window.fetch;
+        return window.fetch as IFilledFetch;
     }
 
 }
