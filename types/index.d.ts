@@ -10,10 +10,10 @@ export type responseErrorCatch = (err: any) => any;
 
 export interface IInterceptor {
     request: requestInterceptor[] & {
-        use?: (interceptor: requestInterceptor) => void;
+        use: (interceptor: requestInterceptor) => void;
     };
     response: responseInterceptor[] & {
-        use?: (interceptor: responseInterceptor, catcher?: responseErrorCatch) => void;
+        use: (interceptor: responseInterceptor, catcher?: responseErrorCatch) => void;
     };
     errorHandlers: responseErrorCatch[];
 }

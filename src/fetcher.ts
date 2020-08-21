@@ -14,7 +14,9 @@ export class FetchFiller {
     };
 
     interceptors: IInterceptor = {
+        // @ts-ignore
         request: [],
+        // @ts-ignore
         response: [],
         errorHandlers: []
     };
