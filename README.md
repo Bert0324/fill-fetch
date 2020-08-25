@@ -12,7 +12,7 @@ A modern, high performance extension of `fetch` api.
 - based on `fetch`, offer same api with it
 - real cancelable request via `AbortController`
 - better performance in large concurrence by `requestIdleCallback`
-- easy to use
+- easy to use and tiny package size
 - fully Typescript support
 
 ## Use
