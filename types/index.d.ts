@@ -78,5 +78,6 @@ declare module 'fill-fetch' {
     /**
      * fill native `window.fetch`
      */
-    function fill(): IFilledFetch;
+    export const fill: () => IFilledFetch;
+    export default fill;
 }

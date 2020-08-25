@@ -1,3 +1,5 @@
 import { FetchFiller } from "./fetcher";
 
-export const fill = () => new FetchFiller().fetchBinding();
+const fill = () => new FetchFiller().fetchBinding();
+export { fill }; 
+export default fill;

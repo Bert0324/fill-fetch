@@ -13,6 +13,7 @@ A modern, high performance extension of `fetch` api.
 - real cancelable request via `AbortController`
 - better performance in large concurrence by `requestIdleCallback`
 - easy to use
+- Typescript support
 
 ## Use
 
@@ -56,3 +57,4 @@ const data = await (await fetcher('/')).json();
 - Chrome 66 +
 - Edge 79 +
 - Firefox 57 +
+- Safari 13.1 + (enable `requestIdleCallback` in Experimental Features)
