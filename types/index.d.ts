@@ -13,12 +13,12 @@ export interface IConfig extends RequestInit {
      */
     timeout?: number;
     /**
-     * max concurrence 
+     * max concurrence
      * @default 10
      */
     maxConcurrence?: number;
     /**
-     * AbortController instance
+     * custom AbortController instance
      * @default undefined
      */
     abortController?: {
@@ -28,30 +28,30 @@ export interface IConfig extends RequestInit {
     [key: string]: any;
 }
 
-export type requestInterceptor = (config: IConfig) => IConfig | Promise<IConfig>;
-export type responseInterceptor = <T = any>(response: T) => T | Promise<T>;
-export type responseErrorCatch = (err: any) => any;
+export type RequestInterceptor = (config: IConfig) => IConfig | Promise<IConfig>;
+export type ResponseInterceptor = <T = any>(response: T) => T | Promise<T>;
+export type ResponseErrorCatch = (err: any) => any;
 
 export interface IInterceptor {
     /**
      * request interceptors
      */
-    request: requestInterceptor[] & {
+    request: RequestInterceptor[] & {
         /**
          * append callback to request interceptor
          */
-        use: (interceptor: requestInterceptor) => void;
+        use: (interceptor: RequestInterceptor) => void;
     };
     /**
      * response interceptors
      */
-    response: responseInterceptor[] & {
+    response: ResponseInterceptor[] & {
         /**
          * append callback to response interceptor
          */
-        use: (interceptor: responseInterceptor, catcher?: responseErrorCatch) => void;
+        use: (interceptor: ResponseInterceptor, catcher?: ResponseErrorCatch) => void;
     };
-    errorHandlers: responseErrorCatch[];
+    errorHandlers: ResponseErrorCatch[];
 }
 
 export type Fetch = typeof fetch;
