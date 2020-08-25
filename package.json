@@ -14,7 +14,7 @@
     "dev": "yarn cross-env webpack-dev-server --config \"./webpack.config.ts\"",
     "build": "yarn cross-env webpack --config \"./webpack.config.ts\" --progress"
   },
-  "author": "",
+  "author": "BertHuang",
   "license": "ISC",
   "dependencies": {
     "lodash-es": "^4.17.15"

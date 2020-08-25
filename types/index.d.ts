@@ -17,6 +17,14 @@ export interface IConfig extends RequestInit {
      * @default 10
      */
     maxConcurrence?: number;
+    /**
+     * AbortController instance
+     * @default undefined
+     */
+    abortController?: {
+        signal: AbortSignal;
+        abort: () => void;
+    };
     [key: string]: any;
 }
 

@@ -10,7 +10,7 @@ export class FetchFiller {
         },
         baseURL: location.origin,
         timeout: 5000,
-        maxConcurrence: 10
+        maxConcurrence: 10,
     };
 
     interceptors: IInterceptor = {
@@ -98,7 +98,7 @@ export class FetchFiller {
             const mergedConfig = await this.setConfig(config);
             Object.keys(params || {}).forEach(key => url.searchParams.append(key, params[key]));
             const url = new URL(`${mergedConfig.baseURL}${path}`);
-            const { signal, abort } = new AbortController();
+            const { signal, abort } = config?.abortController || new AbortController();
             const res = await this.withTimeoutAndWaitForMaxConcurrence(async () => (await this.rawFetch(url.href, {
                 ...mergedConfig,
                 method: 'GET',
@@ -114,7 +114,7 @@ export class FetchFiller {
         try {
             const mergedConfig = await this.setConfig(config);
             const url = new URL(`${mergedConfig.baseURL}${path}`);
-            const { signal, abort } = new AbortController();
+            const { signal, abort } = config?.abortController || new AbortController();
             const res = await this.withTimeoutAndWaitForMaxConcurrence(async () => (await this.rawFetch(url.href, {
                 ...mergedConfig,
                 method: 'POST',
@@ -128,10 +128,10 @@ export class FetchFiller {
     }
 
     fetchBinding() {
-        const fillFetch: IFilledFetch = async (input: RequestInfo, init?: RequestInit) => {
+        const fillFetch: IFilledFetch = async (input: RequestInfo, init?: IConfig) => {
             try {
                 const mergedConfig = await this.setConfig(init);
-                const { signal, abort } = new AbortController();
+                const { signal, abort } = init?.abortController || new AbortController();
                 const res = await this.withTimeoutAndWaitForMaxConcurrence(() => this.rawFetch(input, {
                     ...mergedConfig,
                     signal
